@@ -42,7 +42,7 @@ export default function ProjectPage({ projectInfo }) {
                         </Heading>
                         <Text color={"gray.400"}>{brief}</Text>
                         <Box marginTop={"5px"}>
-                            { tags.map(tag => <Tag marginRight={"2px"} colorScheme={"pink"}>{tag}</Tag>) }
+                            { tags.map((tag, key) => <Tag key={key} marginRight={"2px"} colorScheme={"pink"}>{tag}</Tag>) }
                         </Box>
                     </Box>
                 </Flex>

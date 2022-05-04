@@ -5,7 +5,6 @@ import remarkGfm from "remark-gfm";
 export default function Markdown({ content }) {
   return (
     <ReactMarkdown
-      children={content}
       remarkPlugins={[remarkGfm]}
       components={{
         a: ({ node, ...props }) => (
@@ -35,6 +34,6 @@ export default function Markdown({ content }) {
           <Heading color={"white"} fontSize={"12px"}>{props.children}</Heading>
         ),
       }}
-    />
+    >{content}</ReactMarkdown>
   );
 }
