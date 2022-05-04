@@ -77,7 +77,7 @@ function ProjectLink(props) {
 function getLink(key, value) {
   const config = Settings[key];
   if (config != null) {
-    return <ProjectLink {...config} url={value} />;
+    return <ProjectLink {...config} key={key} url={value} />;
   }
 }
 

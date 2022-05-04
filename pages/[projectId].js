@@ -15,38 +15,30 @@ const Error = {
   FETCH_ERROR: 500
 }
 
-export default function Project() {
-  const router = useRouter()
-  const { projectId } = router.query;
-
-  const [ project, setProject ] = useState(null);
-  const [ error, setError ] = useState(Error.NONE);
-
-  useEffect(() => {
-    if (!router.isReady) return;
-
-    fetch("/api/project?projectId=" + projectId).then(async (req) => {
-      const data = await req.json();
-
-      if (req.status == 200) {
-        setProject(data);
-      } else if (req.status == 404) {
-        setError(Error.NOT_FOUND);
-      } else {
-        setError(Error.FETCH_ERROR);
-      }
-    }).catch((e) => {
-      console.error(e);
-      setError(Error.FETCH_ERROR);
-    });
-  }, [router.isReady])
-
+function Project({ project }) {
   return (
     <Box>
-      { !project && error == Error.NONE && <Loading/> }
-      { project && <ProjectPage projectInfo={project} /> }
-      { !project && error != Error.NONE && <ErrorPage error={error} /> }
+      <ProjectPage projectInfo={project} /> 
     </Box>
   )
 }
-  
+
+export async function getServerSideProps({ params }) {
+  const url = process.env.NODE_ENV === "production" ? "https://2lstudios.dev" : "http://localhost:3000"
+  const res = await fetch(`${url}/api/project?projectId=${params.projectId}`)
+
+  if (res.status != 200) {
+    return {
+      notFound: true
+    }
+  } else {
+    const data = await res.json();
+    return {
+      props: {
+        project: data
+      }
+    }
+  }
+}
+
+export default Project;
