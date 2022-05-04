@@ -34,7 +34,7 @@ export default function ProjectPage({ projectInfo }) {
                         <Image src={icon} width={"84px"}/>
                     </Box>
                     <Box marginLeft={"20px"}>
-                        <Heading color={"white"} fontSize={"32px"}>
+                        <Heading as="h1" color={"white"} fontSize={"32px"}>
                             {name} 
                             <Text fontSize={"22px"} color="gray.400" display={"inline"} marginLeft={"10px"}>
                                 { version && "(v" + version + ")"}
