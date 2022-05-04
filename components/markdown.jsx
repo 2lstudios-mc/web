@@ -1,4 +1,4 @@
-import { Heading, Link, Text } from "@chakra-ui/react";
+import { Button, Heading, Text } from "@chakra-ui/react";
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from "remark-gfm";
 
@@ -8,9 +8,14 @@ export default function Markdown({ content }) {
       remarkPlugins={[remarkGfm]}
       components={{
         a: ({ node, ...props }) => (
-          <Link color={"pink.400"} to={props.href}>
-            {props.children}
-          </Link>
+          <a href={props.href} rel="noreferrer" target="_blank">
+            <Button
+              variant="link"
+              colorScheme={"pink"}
+            >
+              <Text>{props.children}</Text>
+            </Button>
+          </a>
         ),
         p: ({ node, ...props }) => <Text color={"gray.300"} fontSize={"18px"} margin={"20px 0"}>{props.children}</Text>,
 
