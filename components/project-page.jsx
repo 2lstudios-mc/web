@@ -22,7 +22,7 @@ export default function ProjectPage({ projectInfo }) {
             </Head>
 
             <Box 
-                width={"65%"} 
+                width={"60%"} 
                 backgroundColor={"#161C27"} 
                 padding={"20px"} 
                 borderTop={"5px solid white"} 
@@ -37,7 +37,7 @@ export default function ProjectPage({ projectInfo }) {
                         <Heading color={"white"} fontSize={"32px"}>
                             {name} 
                             <Text fontSize={"22px"} color="gray.400" display={"inline"} marginLeft={"10px"}>
-                                (v{version})
+                                { version && "(v" + version + ")"}
                             </Text>
                         </Heading>
                         <Text color={"gray.400"}>{brief}</Text>

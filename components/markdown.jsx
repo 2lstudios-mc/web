@@ -12,7 +12,7 @@ export default function Markdown({ content }) {
             {props.children}
           </Link>
         ),
-        p: ({ node, ...props }) => <Text color={"gray.300"} fontSize={"18px"}>{props.children}</Text>,
+        p: ({ node, ...props }) => <Text color={"gray.300"} fontSize={"18px"} margin={"20px 0"}>{props.children}</Text>,
 
         h1: ({ node, ...props }) => (
           <Heading color={"white"} margin={"10px 0 "} fontSize={"52px"}>
