@@ -1,5 +1,11 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
-import { BsGithub, BsPaypal, BsBook, BsDiscord, BsTwitter } from "react-icons/bs";
+import {
+  BsGithub,
+  BsPaypal,
+  BsBook,
+  BsDiscord,
+  BsTwitter,
+} from "react-icons/bs";
 import { FaJenkins } from "react-icons/fa";
 import { BiStore, BiStats } from "react-icons/bi";
 
@@ -113,18 +119,24 @@ export default function ProjectSidebar({ links, release_date, update_date }) {
       borderRadius={"10px"}
     >
       <Box marginBottom={"20px"}>
-        <KeyValue
-          keyName={"Released:"}
-          value={
-            release.toLocaleDateString() + " at " + release.toLocaleTimeString()
-          }
-        />
-        <KeyValue
-          keyName={"Last Updated:"}
-          value={
-            update.toLocaleDateString() + " at " + update.toLocaleTimeString()
-          }
-        />
+        {release_date && (
+          <KeyValue
+            keyName={"Released:"}
+            value={
+              release.toLocaleDateString() +
+              " at " +
+              release.toLocaleTimeString()
+            }
+          />
+        )}
+        {update_date && (
+          <KeyValue
+            keyName={"Last Updated:"}
+            value={
+              update.toLocaleDateString() + " at " + update.toLocaleTimeString()
+            }
+          />
+        )}
       </Box>
 
       <Box marginBottom={"20px"} textAlign={"center"}>
